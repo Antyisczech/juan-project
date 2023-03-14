@@ -1,0 +1,5 @@
+name: Project
+version: '${project.version}'
+main: me.anty.project.main
+api-version: 1.15
+authors: [ Anty ]
