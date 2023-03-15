@@ -8,31 +8,28 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class gamemodeC implements CommandExecutor {
+public class gamemodeS implements CommandExecutor {
+
 
     private final main plugin;
 
-    public gamemodeC(main plugin) {this.plugin = plugin;}
+    public gamemodeS(main plugin) {this.plugin = plugin;}
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
-        if(sender instanceof Player){
+        if (sender instanceof Player){
             Player player = (Player) sender;
-
-            if (player.hasPermission("a-team.gmc")){
+            if (player.hasPermission("a-team.gms")){
                 if (args.length > 0){
                     Player target = Bukkit.getPlayer(args[0]);
+
                     try {
-                        target.setGameMode(GameMode.CREATIVE);
-                        player.sendMessage(target + " "+ "dostal gamemode creative");
-                    } catch (NullPointerException e){
-                        player.sendMessage(target + " " + "neexistuje");
-                    }
+                        target.setGameMode(GameMode.SURVIVAL);
+                        player.sendMessage(target + "" + "dostal gamemode survival");
+                    } catch (NullPointerException e){player.sendMessage(target + "" + "neexistuje");}
                 }
-            } else {player.sendMessage("Nemáš permise");}
+            }
         }
-
-
         return false;
     }
 }
